@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HeaderComp/>
+    <HeaderComp @search="userSearch"/>
     <MainComp/>
   </div>
 </template>
@@ -19,8 +19,10 @@ export default {
   
   data(){
     return{
-      dataApi: [],
-      userSearch: 'batman',
+      moviesList: [],
+      seriesList: [],
+      search: '',
+
       apiPath: {
         basePath: 'https://api.themoviedb.org/3/search/',
         moviePath: 'movie',
@@ -31,13 +33,41 @@ export default {
   },
   
   mounted(){
-    axios.get(`${this.apiPath.basePath}${this.apiPath.moviePath}${this.apiPath.apiKey}&query=${this.userSearch}`)
+    
+    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=eb79889aac5d560eff7a8e0e1277ccf2&language=it')
     .then((response) =>{
-    this.dataApi = response.data.results
+    this.moviesList = response.data.results
     })
-  }
 
-}
+    axios.get('https://api.themoviedb.org/3/tv/popular?api_key=eb79889aac5d560eff7a8e0e1277ccf2&language=it')
+    .then((response) =>{
+    this.seriesList = response.data.results
+    })
+  },
+
+  methods:{
+      userSearch(input){
+      this.search = input
+      this.moviesList = []
+      this.seriesList = []
+      
+      axios.get(`${this.apiPath.basePath}${this.apiPath.moviePath}${this.apiPath.apiKey}&query=${this.search}`)
+      .then((response) =>{
+      this.moviesList = response.data.results
+      })
+      
+      axios.get(`${this.apiPath.basePath}${this.apiPath.tvPath}${this.apiPath.apiKey}&query=${this.search}`)
+      .then((response) =>{
+      this.seriesList = response.data.results
+      })
+    }
+
+  }
+ 
+ }
+
+  
+
 </script>
 
 <style lang="scss">

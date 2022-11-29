@@ -6,7 +6,7 @@
             </div>
             <div>
                 <span>Cerca:</span>
-                <input class="searchbar" type="text">
+                <input class="searchbar" type="text" v-model="inputText" @keyup.enter="$emit('search', inputText )">
             </div>
         </nav>
     </header>
@@ -14,7 +14,13 @@
 
 <script>
     export default {
-        name: 'HeaderComp'
+        name: 'HeaderComp',
+
+        data(){
+            return{
+                inputText: '',
+            }
+        }
     }
 </script>
 
