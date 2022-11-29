@@ -1,7 +1,7 @@
 <template>
     <main>
-        <MoviesBox/>
-        <SeriesBox/>
+        <MoviesBox :movies="movies"/>
+        <SeriesBox :series="series"/>
     </main>
 </template>
 
@@ -11,13 +11,17 @@ import SeriesBox from './SeriesBox.vue'
 
     export default {
         name: 'MainComp',
+        props: {
+            movies: Array,
+            series: Array
+        },
         components: {
             MoviesBox,
             SeriesBox
         }
     }
 </script>
-
+    
 <style lang="scss" scoped>
 
 </style>

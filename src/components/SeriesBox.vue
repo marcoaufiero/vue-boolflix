@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import CardComp from './CardComp.vue'
+import CardComp from './SerieCard.vue'
 
     export default {
         name: 'SeriesBox',

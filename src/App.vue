@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderComp @search="userSearch"/>
-    <MainComp/>
+    <MainComp :movies="moviesList" :series="seriesList"/>
   </div>
 </template>
 
