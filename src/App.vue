@@ -75,9 +75,6 @@ export default {
    
   font-family: sans-serif;
   background-color: #2c3e50;
-  height: 100vh;
-  
-  
  
 }
 

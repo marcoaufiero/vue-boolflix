@@ -1,11 +1,11 @@
 <template>
-    <div>
-        <CardComp v-for="(elem,index) in movies" :key="index" :movie="elem"/>
+    <div class="box">
+        <MovieCard v-for="(elem,index) in movies" :key="index" :movie="elem"/>
     </div>
 </template>
 
 <script>
-import CardComp from './MovieCard.vue'
+import MovieCard from './MovieCard.vue'
 
     export default {
         name: 'MoviesBox',
@@ -13,11 +13,21 @@ import CardComp from './MovieCard.vue'
             movies: Array,
         },
         components: {
-            CardComp
+            MovieCard
+        },
+        data(){
+            return{
+                
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+    .box{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 50px;
+        gap: 20px;
+    }
 </style>

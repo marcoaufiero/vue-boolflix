@@ -1,20 +1,28 @@
 <template>
-    <div>
-        <CardComp/>
+    <div class="box">
+        <SerieCard v-for="(elem,index) in series" :key="index" :serie="elem"/>
     </div>
 </template>
 
 <script>
-import CardComp from './SerieCard.vue'
+import SerieCard from './SerieCard.vue'
 
     export default {
         name: 'SeriesBox',
+        props: {
+            series: Array,
+        },
         components: {
-            CardComp
+            SerieCard
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+    .box{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 50px;
+        gap: 20px;
+    }
 </style>

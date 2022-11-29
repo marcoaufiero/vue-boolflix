@@ -1,6 +1,8 @@
 <template>
     <main>
+        <h1>Movies</h1>
         <MoviesBox :movies="movies"/>
+        <h1>TV Series</h1>
         <SeriesBox :series="series"/>
     </main>
 </template>
@@ -21,7 +23,17 @@ import SeriesBox from './SeriesBox.vue'
         }
     }
 </script>
-    
-<style lang="scss" scoped>
 
+<style lang="scss" scoped>
+    main{
+        
+        h1{
+            color: white;
+            font-size: 3rem;
+            text-align: center;
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+        }
+    }
 </style>
