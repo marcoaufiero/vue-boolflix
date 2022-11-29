@@ -12,7 +12,7 @@
     export default {
         name: 'SerieCard',
         props:{
-            serie: Element
+            serie: Object
         }
     }
 </script>
