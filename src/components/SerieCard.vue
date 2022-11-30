@@ -56,11 +56,11 @@
         
         background-color: black;
         aspect-ratio: 2/3;
-        height: 30vh;
+        height: 32vh;
         color: white;
-        padding: 10px;
+        padding: 5px;
         margin: 0 10px;
-        border-radius: 10px;
+        border-radius: 15px;
 
         &:hover{
             cursor: pointer;
@@ -77,10 +77,24 @@
         .poster{
             z-index: 2;
             width: 100%;
+            border-radius: 10px;
         }
 
         .info{
             display: none;
+            padding: 10px;
+
+            h2{
+                color: #8a0a0a;
+            }
+
+            > *{
+                margin-bottom: 10px;
+            }
+
+            .fa-star{
+                color: yellow;
+            }
         }
 
     }

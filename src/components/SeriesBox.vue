@@ -24,7 +24,6 @@ import SerieCard from './SerieCard.vue'
         display: flex;
         overflow: auto;
         padding-bottom: 10px;
-        
     }
     
 </style>

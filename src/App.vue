@@ -47,19 +47,36 @@ export default {
 
   methods:{
       userSearch(input){
-      this.search = input
-      this.moviesList = []
-      this.seriesList = []
       
-      axios.get(`${this.apiPath.basePath}${this.apiPath.moviePath}${this.apiPath.apiKey}&query=${this.search}`)
-      .then((response) =>{
-      this.moviesList = response.data.results
-      })
+      if(input == ''){
+        axios.get('https://api.themoviedb.org/3/movie/popular?api_key=eb79889aac5d560eff7a8e0e1277ccf2&language=it')
+        .then((response) =>{
+        this.moviesList = response.data.results
+        })
+
+        axios.get('https://api.themoviedb.org/3/tv/popular?api_key=eb79889aac5d560eff7a8e0e1277ccf2&language=it')
+        .then((response) =>{
+        this.seriesList = response.data.results
+        })
+      }else{
+
+        this.search = input
+        this.moviesList = []
+        this.seriesList = []
       
-      axios.get(`${this.apiPath.basePath}${this.apiPath.tvPath}${this.apiPath.apiKey}&query=${this.search}`)
-      .then((response) =>{
-      this.seriesList = response.data.results
-      })
+        axios.get(`${this.apiPath.basePath}${this.apiPath.moviePath}${this.apiPath.apiKey}&query=${this.search}`)
+        .then((response) =>{
+        this.moviesList = response.data.results
+        })
+      
+        axios.get(`${this.apiPath.basePath}${this.apiPath.tvPath}${this.apiPath.apiKey}&query=${this.search}`)
+        .then((response) =>{
+        this.seriesList = response.data.results
+        })
+        
+      }
+
+      
     }
 
   }
