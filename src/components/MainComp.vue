@@ -31,9 +31,7 @@ import SeriesBox from './SeriesBox.vue'
             color: white;
             font-size: 3rem;
             text-align: center;
-            margin-top: 50px;
-            display: flex;
-            justify-content: center;
+            margin: 30px 0;
         }
     }
 </style>

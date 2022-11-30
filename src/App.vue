@@ -71,11 +71,14 @@ export default {
 </script>
 
 <style lang="scss">
+
 #app {
    
   font-family: sans-serif;
-  background-color: #2c3e50;
- 
+  background-color: #141414;
+  width: 100vw;
+  height: 100vh;
+  
 }
 
 *{
@@ -83,5 +86,6 @@ export default {
     padding: 0;
     box-sizing: border-box;
 }
+
 
 </style>

@@ -19,10 +19,12 @@ import SerieCard from './SerieCard.vue'
 </script>
 
 <style lang="scss" scoped>
+    
     .box{
         display: flex;
-        flex-wrap: wrap;
-        padding: 50px;
-        gap: 20px;
+        overflow: auto;
+        padding-bottom: 10px;
+        
     }
+    
 </style>
