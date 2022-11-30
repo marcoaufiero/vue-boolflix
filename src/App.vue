@@ -79,13 +79,44 @@ export default {
   width: 100vw;
   height: 100vh;
   
+  ::-webkit-scrollbar{
+    height: 15px; 
+  }
+
+  ::-webkit-scrollbar-track {
+  background: #202020; 
+  border: 2px solid black;
+  margin: 0 10px;
+  border-radius: 100vmax;
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background: black;
+    // border: 2px solid #202020;
+    border-radius: 100vmax;
+    
+    &:hover{
+      background: rgb(5, 5, 5);
+      cursor: pointer;
+    }
+  }
+  
+
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    
+  
 }
+
+
+  
+
+
 
 
 </style>
