@@ -3,10 +3,12 @@
         <div>
             <img class="poster" :src="`https://image.tmdb.org/t/p/w342${serie.poster_path}`" alt="">
             <div class="info">
-                <h3>Titolo: {{serie.name}}</h3>
+                <h2>{{serie.name}}</h2>
                 <h4>Lingua: {{serie.original_language.toUpperCase()}}</h4>
                 <h4>Voto: {{serie.vote_average}}</h4>
                 <img :src="`https://www.countryflagicons.com/SHINY/32/${serie.original_language.toUpperCase()}.png`">
+                <font-awesome-icon v-for="(fullstar, index) in this.serie.vote_average" :key="index" icon="fa-solid fa-star" />
+                <font-awesome-icon v-for="(emptystar, index) in 5 - this.serie.vote_average" :key="index+9999" icon="fa-regular fa-star" />
             </div>
             
         </div>
@@ -14,12 +16,18 @@
 </template>
 
 <script>
+    
+    
     export default {
         name: 'SerieCard',
         props:{
             serie: Object
         },
+        
+        beforeUpdate(){
+            this.displayRating(this.serie)
 
+        },
         mounted(){
             this.flagFix(this.serie)
         },
@@ -33,7 +41,12 @@
                 }else if(obj.original_language == 'uk'){
                     obj.original_language = 'gb'
                 }
-            }
+            },
+
+            displayRating(elem){
+                let vote = parseInt(Math.round(elem.vote_average)/2);
+                elem.vote_average = vote;
+            },
         }
     }
 </script>
@@ -69,10 +82,6 @@
 
         .info{
             display: none;
-
-            *{
-                padding: 10px 20px;
-            }
         }
 
     }

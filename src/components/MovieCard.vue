@@ -3,7 +3,7 @@
         <div>
             <img class="poster" :src="`https://image.tmdb.org/t/p/w342${movie.poster_path}`" alt="">
             <div class="info">
-                <h3>Titolo: {{movie.title}}</h3>
+                <h2>{{movie.title}}</h2>
                 <h4>Titolo originale: {{movie.original_title}}</h4>
                 <h4>Lingua: {{movie.original_language.toUpperCase()}}</h4>
                 <h4>Voto: {{movie.vote_average}}</h4>
@@ -69,10 +69,6 @@
 
         .info{
             display: none;
-
-            *{
-                padding: 10px 20px;
-            }
         }
         
     }
