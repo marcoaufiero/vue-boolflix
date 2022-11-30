@@ -5,10 +5,13 @@
             <div class="info">
                 <h2>{{serie.name}}</h2>
                 <h4>Lingua: {{serie.original_language.toUpperCase()}}</h4>
-                <h4>Voto: {{serie.vote_average}}</h4>
+                <div>
+                    Voto: 
+                    <font-awesome-icon v-for="(fullstar, index) in displayRating(this.serie)" :key="index" icon="fa-solid fa-star" />
+                    <font-awesome-icon v-for="(emptystar, index) in 5 - displayRating(this.serie)" :key="index+9999" icon="fa-regular fa-star" />
+                </div>
                 <img :src="`https://www.countryflagicons.com/SHINY/32/${serie.original_language.toUpperCase()}.png`">
-                <font-awesome-icon v-for="(fullstar, index) in this.serie.vote_average" :key="index" icon="fa-solid fa-star" />
-                <font-awesome-icon v-for="(emptystar, index) in 5 - this.serie.vote_average" :key="index+9999" icon="fa-regular fa-star" />
+                
             </div>
             
         </div>
@@ -24,10 +27,6 @@
             serie: Object
         },
         
-        beforeUpdate(){
-            this.displayRating(this.serie)
-
-        },
         mounted(){
             this.flagFix(this.serie)
         },
@@ -44,8 +43,8 @@
             },
 
             displayRating(elem){
-                let vote = parseInt(Math.round(elem.vote_average)/2);
-                elem.vote_average = vote;
+                let vote = Math.round(elem.vote_average/2);
+                return vote;
             },
         }
     }

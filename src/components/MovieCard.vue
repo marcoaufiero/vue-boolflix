@@ -6,7 +6,11 @@
                 <h2>{{movie.title}}</h2>
                 <h4>Titolo originale: {{movie.original_title}}</h4>
                 <h4>Lingua: {{movie.original_language.toUpperCase()}}</h4>
-                <h4>Voto: {{movie.vote_average}}</h4>
+                <div>
+                    Voto: 
+                    <font-awesome-icon v-for="(fullstar, index) in displayRating(this.movie)" :key="index" icon="fa-solid fa-star" />
+                    <font-awesome-icon v-for="(emptystar, index) in 5 - displayRating(this.movie)" :key="index+9999" icon="fa-regular fa-star"/>
+                </div>
                 <img :src="`https://www.countryflagicons.com/SHINY/32/${movie.original_language.toUpperCase()}.png`">
             </div>
         </div>
@@ -23,7 +27,7 @@
         mounted(){
             this.flagFix(this.movie)
         },
-        
+
         methods:{
             flagFix(obj){
                 if(obj.original_language == 'en'){
@@ -33,7 +37,12 @@
                 }else if(obj.original_language == 'uk'){
                     obj.original_language = 'gb'
                 }
-            }
+            },
+
+            displayRating(elem){
+                let vote = Math.round(elem.vote_average/2);
+                return vote;
+            },
         }
     }
 </script>
